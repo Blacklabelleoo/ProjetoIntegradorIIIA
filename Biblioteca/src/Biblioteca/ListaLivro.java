@@ -51,7 +51,7 @@ public class ListaLivro{
 		tamanho ++;	
 	}
 	
-	public Livro retiraFim() {
+	public Livro retiraFim() { //refazer esse retira para o remove com index
 		if (fim == null) {
 			return null;
 		}
@@ -66,17 +66,58 @@ public class ListaLivro{
 		return out;		
 	}
 	
+	public Livro retirar(int index) {
+		if(index < 0 
+		   || index >= tamanho 
+		   || inicio == null) {
+			return null;
+			
+		} else if (index == 0) {
+			return retirarInicio();
+		} else if (index == tamanho -1) {
+			return retiraFim();
+		}
+		No local = inicio;
+		for(int i = 0; i < index; i++ ) {
+			local = local.proximo;
+		}
+		if(local.anterior != null) {
+			local.anterior.proximo = local.proximo;
+		}
+		if(local.proximo != null) {
+			local.proximo.anterior = local.anterior;
+		}
+		tamanho --;
+		
+		return local.livro;
+	}
+	
 	public int tamanho() {
 		return tamanho;
 	}
 	
 	public Livro get(int index) {
-		//fazer
+		if(index < 0 
+		   || index >= tamanho 
+		   || inicio == null) {
+			return null;
+			
+		} else if (index == 0) {
+			return inicio.livro;
+		} else if (index == tamanho -1) {
+			return fim.livro;
+		}
+		No local = inicio;
+		for(int i = 0; i < index; i++ ) {
+			local = local.proximo;
+		}
+		
+		return local.livro;
 	}
-	
-	public ordenar() {
-		//fazer
-	}
+//	
+//	public ordenar() {
+//		//fazer
+//	}
 }
 
 
