@@ -17,5 +17,4 @@ public class Autor {
 		this.pais = pais;
 	}
 
-	
 }
