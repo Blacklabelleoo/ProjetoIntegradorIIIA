@@ -26,8 +26,7 @@ public class Interface {
 					break;
 					
 				case 4:
-					lista.retiraFim(); // criar um remover (index)
-					break;
+					lista.retiraFim();
 					
 				case 5: 
 					System.out.println("Informe o item a ser removido!");
@@ -35,7 +34,7 @@ public class Interface {
 
 
 				case 6: 
-					// testes de impressao
+					lista.quickSort(lista, 0, lista.tamanho() - 1);
 
 					for(int i = 0; i < lista.tamanho; i++)
 					{
@@ -43,6 +42,10 @@ public class Interface {
 					}
 				case 7:
 					
+					for(int i = 0; i < lista.tamanho; i++)
+					{
+						System.out.println(lista.get(i).getTitulo());
+					}
 				case 8:
 					
 				case 9:
@@ -62,10 +65,9 @@ public class Interface {
 		System.out.println("3.Excluir um livro do inicio da lista");
 		System.out.println("4.Excluir um livro do fim da lista");
 		System.out.println("5.Excluir um livro da lista");
-		System.out.println("6.Apresentar os títulos de todos os livros cadastrados em ordem alfabética");
-		System.out.println("7.presentar os títulos dos livros de um determinado autor");
-		System.out.println("8.Apresentar os títulos dos livros de um determinado autor");
-		System.out.println("9.Apresentar os títulos dos livros publicados em um determinado intervalo de anos ");
+		System.out.println("6.Ordenar os títulos de todos os livros cadastrados em ordem alfabética");
+		System.out.println("7.Apresentar os títulos dos livros de um determinado autor");
+		System.out.println("8.Apresentar os títulos dos livros publicados em um determinado intervalo de anos ");
 			//(p.ex.: livros publicados entre 2010 e 2015)4.Apresentar título, autor e editora de todos o
 		    //s livros que contém, no seu título, uma palavra ou frase informada pelo usuário.
 	}

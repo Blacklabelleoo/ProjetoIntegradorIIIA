@@ -1,9 +1,9 @@
 package Biblioteca;
 
 public class ListaLivro{
-	No inicio;
-	No fim;
-	int tamanho;
+	 No inicio;
+	 No fim;
+	 int tamanho;
 	
 	public void inserirInicio(Livro livro) {
 		No no = new No();
@@ -114,10 +114,74 @@ public class ListaLivro{
 		
 		return local.livro;
 	}
-//	
-//	public ordenar() {
-//		//fazer
-//	}
+	public void insert(int index, Livro info) {
+		if(index <= 0) {
+			inserirInicio(info);
+		} else if (index >= tamanho) {
+			inserirFim(info);
+		} else {
+			No local = inicio;
+			for (int i = 0; i < index-1; i++){
+				local = local.proximo;
+			}
+			No no = new No();
+			no.livro = info;
+			no.anterior = local;
+			no.proximo = local.proximo;
+			local.proximo = no;
+			no.proximo.anterior = no;
+			tamanho++;
+		}
+	}
+	public void set(int index, Livro info) {
+		No local = inicio;
+		for (int i = 0; i < index; i++){
+			local = local.proximo;
+		}
+		local.livro = info;
+
+	}
+	
+	static int partition(ListaLivro list, int begin, int end) {
+	    int pivot = end;
+
+	    int counter = begin;
+	    for (int i = begin; i < end; i++) {
+	        if (list.get(i).getTitulo().compareTo(list.get(pivot).getTitulo()) < 0) { //ver como comparar os titulos
+	        	
+	            Livro temp = list.get(counter);
+	            list.set(counter, list.get(i));
+	            list.set(i, temp);
+	            counter++;
+	        }
+	    }
+	    Livro temp = list.get(pivot);
+	    list.set(pivot, list.get(counter));
+	    list.set(counter, temp);
+
+	    return counter;
+	}
+
+	public void quickSort(ListaLivro list, int begin, int end) {
+	    if (end <= begin) return;
+	    int pivot = partition(list, begin, end);
+	    quickSort(list, begin, pivot-1);
+	    quickSort(list, pivot+1, end);
+	}
+	
+	public static void insertionSort(ListaLivro list) {
+	    for (int i = 1; i < list.tamanho(); i++) {
+	        Livro current = list.get(i);
+	        int j = i - 1;
+	        while(j >= 0 && current.getTitulo().compareTo(list.get(j).getTitulo()) < 0 ){
+	            list.set(j + 1, list.get(j)); 
+	            j--;
+	        }
+
+	        list.set(j + 1, current);
+	    }
+	}
+	
 }
 
 
