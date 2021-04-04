@@ -144,10 +144,10 @@ public class ListaLivro{
 	
 	static int partition(ListaLivro list, int begin, int end) {
 	    int pivot = end;
-
 	    int counter = begin;
+	    
 	    for (int i = begin; i < end; i++) {
-	        if (list.get(i).getTitulo().compareTo(list.get(pivot).getTitulo()) < 0) { //ver como comparar os titulos
+	        if (list.get(i).getTitulo().compareTo(list.get(pivot).getTitulo()) < 0) { 
 	        	
 	            Livro temp = list.get(counter);
 	            list.set(counter, list.get(i));
